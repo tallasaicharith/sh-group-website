@@ -1969,7 +1969,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   object-fit: cover;
   transition: all 0.4s ease;
-  border: 2px solid rgba(212, 175, 55, 0.3);
+  border: none;
+  background: transparent;
 }
 
 .navbar.scrolled .nav-logo-img {
@@ -2196,13 +2197,14 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
 }
 
+/* Chatbot Header Avatar */
 .chatbot-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid rgba(255,255,255,0.3);
-  background: var(--white);
+  border: none;
+  background: transparent;
 }
 
 .chatbot-avatar img {
@@ -2286,8 +2288,8 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 32px;
   border-radius: 50%;
   overflow: hidden;
-  background: var(--white);
-  border: 1px solid var(--mid-gray);
+  background: transparent;
+  border: none;
 }
 
 .chat-msg-avatar img {
