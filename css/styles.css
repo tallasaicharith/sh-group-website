@@ -2086,8 +2086,9 @@ h1, h2, h3, h4, h5, h6 {
   }
   .builders-cta-text h3 { font-size: 1.4rem; }
   .builders-cta-actions { justify-content: center; }
-  .cta-badge-inner { width: 90px; height: 90px; }
-  .cta-badge-number { font-size: 1.1rem; }
+  .cta-badge-inner { width: 115px; height: 115px; }
+  .cta-badge-number { font-size: 1.15rem; }
+  .cta-badge-label { font-size: 0.58rem; letter-spacing: 0.2px; }
 }
 
 /* ============================================

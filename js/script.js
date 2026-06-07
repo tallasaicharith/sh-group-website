@@ -619,7 +619,7 @@ function handleFormSubmit(event) {
       botReply('🏠 <strong>SH Builders</strong> offers:<br><br>• Complete House Construction<br>• 3D Elevation Design<br>• Floor Planning (Vastu compliant)<br>• Real Estate Services<br><br>Since 2020, we\'ve completed 20+ projects!',
         quickReplies(['Free Consultation', 'View Projects', 'Get Quote', 'Back to Menu']), 1200);
     } else if (val === 'SH Medical') {
-      botReply('🔬 <strong>SH Medical Devices</strong> provides:<br><br>• Precision Surgical Instruments<br>• Complete OT Kits<br>• Scalpels, Forceps, Scissors<br>• Needle Holders & Retractors<br><br>Supplying 50+ hospitals across India!',
+      botReply('🔬 <strong>SH Medical Devices</strong> provides:<br><br>• Precision Surgical Instruments<br>• Complete OT Kits<br>• Scalpels, Forceps, Scissors<br>• Needle Holders & Retractors<br><br>Supplying quality instruments across India!',
         quickReplies(['Request Catalog', 'Contact Sales', 'Back to Menu']), 1200);
     } else if (val === 'Contact Us') {
       botReply('📞 <strong>Contact SH Group:</strong><br><br>📱 <a href="tel:+919849388477" style="color:#1565c0;">+91 98493 88477</a><br>✉️ <a href="mailto:cjangaiah@gmail.com" style="color:#1565c0;">cjangaiah@gmail.com</a><br>🌐 <a href="https://shgroup.co.in" style="color:#1565c0;">shgroup.co.in</a><br><br>Or share your details and we\'ll call you back!',
