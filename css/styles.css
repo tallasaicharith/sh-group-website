@@ -79,12 +79,16 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-body);
   background: var(--off-white);
   color: var(--charcoal);
   line-height: 1.7;
-  overflow-x: hidden;
 }
 
 img {
@@ -118,6 +122,7 @@ h1, h2, h3, h4, h5, h6 {
 .section {
   padding: var(--section-padding);
   position: relative;
+  overflow: hidden;
 }
 
 .section-header {
