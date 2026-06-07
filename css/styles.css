@@ -224,7 +224,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 9999;
   padding: 20px 0;
   transition: all 0.4s var(--ease-out);
 }
@@ -329,7 +329,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 5px;
   cursor: pointer;
   padding: 8px;
-  z-index: 1001;
+  z-index: 10000;
 }
 
 .nav-toggle span {
@@ -2827,7 +2827,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1100;
+  z-index: 9998;
   background: linear-gradient(90deg, var(--navy), var(--navy-light));
   padding: 10px 16px;
   align-items: center;
