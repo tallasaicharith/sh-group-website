@@ -4,52 +4,81 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-
   // --- Preloader Animation ---
   const preloader = document.getElementById('preloader');
   const preloaderProgress = document.getElementById('preloaderProgress');
   
   if (preloader && preloaderProgress) {
-    let progress = 0;
-    const progressInterval = setInterval(() => {
-      progress += Math.random() * 15 + 5;
-      if (progress >= 100) {
-        progress = 100;
+    // Check if preloader has already run in this session
+    if (sessionStorage.getItem('preloader_run')) {
+      // Skip animation, hide preloader immediately
+      preloader.style.display = 'none';
+      preloader.classList.add('hidden');
+      document.body.style.overflow = '';
+      
+      // Handle hash scroll rescue directly since we skipped the interval
+      const hash = window.location.hash;
+      if (hash) {
+        const target = document.querySelector(hash);
+        if (target) {
+          const navbarEl = document.getElementById('navbar');
+          const navHeight = navbarEl ? navbarEl.offsetHeight : 80;
+          setTimeout(() => {
+            window.scrollTo({
+              top: target.offsetTop - navHeight,
+              behavior: 'smooth'
+            });
+          }, 300);
+        }
+      }
+    } else {
+      // Run normal preloader animation
+      let progress = 0;
+      const progressInterval = setInterval(() => {
+        progress += Math.random() * 15 + 5;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(progressInterval);
+          preloaderProgress.style.width = '100%';
+          
+          // Set flag in sessionStorage
+          sessionStorage.setItem('preloader_run', 'true');
+          
+          setTimeout(() => {
+            preloader.classList.add('hidden');
+            document.body.style.overflow = '';
+            
+            // Re-trigger scroll to hash target if present (blocked by preloader hidden overflow)
+            const hash = window.location.hash;
+            if (hash) {
+              const target = document.querySelector(hash);
+              if (target) {
+                const navbarEl = document.getElementById('navbar');
+                const navHeight = navbarEl ? navbarEl.offsetHeight : 80;
+                setTimeout(() => {
+                  window.scrollTo({
+                    top: target.offsetTop - navHeight,
+                    behavior: 'smooth'
+                  });
+                }, 300);
+              }
+            }
+          }, 400);
+        }
+        preloaderProgress.style.width = progress + '%';
+      }, 200);
+
+      // Safety timeout - hide after 3s max
+      setTimeout(() => {
         clearInterval(progressInterval);
         preloaderProgress.style.width = '100%';
-        setTimeout(() => {
-          preloader.classList.add('hidden');
-          document.body.style.overflow = '';
-          
-          // Re-trigger scroll to hash target if present (blocked by preloader hidden overflow)
-          const hash = window.location.hash;
-          if (hash) {
-            const target = document.querySelector(hash);
-            if (target) {
-              const navbarEl = document.getElementById('navbar');
-              const navHeight = navbarEl ? navbarEl.offsetHeight : 80;
-              setTimeout(() => {
-                window.scrollTo({
-                  top: target.offsetTop - navHeight,
-                  behavior: 'smooth'
-                });
-              }, 300);
-            }
-          }
-        }, 400);
-      }
-      preloaderProgress.style.width = progress + '%';
-    }, 200);
+        sessionStorage.setItem('preloader_run', 'true');
+        setTimeout(() => preloader.classList.add('hidden'), 200);
+      }, 3000);
 
-    // Safety timeout — hide after 3s max
-    setTimeout(() => {
-      clearInterval(progressInterval);
-      preloaderProgress.style.width = '100%';
-      setTimeout(() => preloader.classList.add('hidden'), 200);
-    }, 3000);
-
-    // Prevent scroll during preloader
-    document.body.style.overflow = 'hidden';
+      // Prevent scroll during preloader
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   // --- Mobile Click-to-Call Banner ---
